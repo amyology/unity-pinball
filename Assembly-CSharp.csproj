@@ -46,12 +46,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BallScript.cs" />
-     <Compile Include="Assets\Scripts\BumperScript.cs" />
      <Compile Include="Assets\Scripts\DetectTouch.cs" />
      <Compile Include="Assets\Scripts\GameControllerScript.cs" />
      <Compile Include="Assets\Scripts\LeftFlipper.cs" />
      <Compile Include="Assets\Scripts\LevelUp.cs" />
-     <Compile Include="Assets\Scripts\Spring.cs" />
+     <Compile Include="Assets\Scripts\ScoreTracker.cs" />
      <Compile Include="Assets\Scripts\flipperScript.cs" />
      <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />
      <Compile Include="Assets\Vuforia\Scripts\CloudRecoBehaviour.cs" />

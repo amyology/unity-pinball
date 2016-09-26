@@ -30,6 +30,7 @@ public class GameControllerScript : MonoBehaviour {
 
 		//Quit app
 		if (Input.GetKey ("escape")) {
+			gameText.text = "Exiting...";
 			Application.Quit ();
 		}
 
@@ -66,10 +67,7 @@ public class GameControllerScript : MonoBehaviour {
 		if (livesCount == maxLives && ballRB.transform.position.y < theBottom) {
 			GameOver ();
 		}
-
-		if (score == 50) {
-			StartCoroutine (NextLevel ());
-		}
+			
 	}
 
 	//Add force to ball on launch
@@ -103,18 +101,10 @@ public class GameControllerScript : MonoBehaviour {
 	}
 
 	//Reload when no more lives
-	IEnumerator ReloadGame(){
+	IEnumerator ReloadGame () {
 		yield return new WaitForSeconds (2);
-		Application.LoadLevel(Application.loadedLevel);
-	}
-
-	IEnumerator NextLevel () {
-		yield return new WaitForSeconds (2);
-		SceneManager.LoadScene ("Scene2");
-		SceneManager.SetActiveScene(SceneManager.Scene scene){
-			scene = SceneManager.Scene.name("Scene2");
-		};
-	
+		Scene scene = SceneManager.GetActiveScene ();
+		SceneManager.LoadScene (scene.name);
 	}
 
 }
