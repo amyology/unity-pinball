@@ -7,7 +7,7 @@ public class GameControllerScript : MonoBehaviour {
 
 	GameObject ball; //the ball
 	Rigidbody2D ballRB; //the ball rigidbody2d
-	float maxSpeed = 600f; //maximum speed
+	float maxSpeed = 300f; //maximum speed
 	Vector3 defaultPosition; //starting position
 	int livesCount; //lives counter
 	int maxLives = 3; //max number of lives
@@ -52,7 +52,7 @@ public class GameControllerScript : MonoBehaviour {
 		}
 
 		//If ball gets stuck, return ball to default position and add a life
-		if (ballRB.transform.position.x < 7.79 && ballRB.velocity.magnitude <= 0.05 && livesCount < maxLives) {
+		if (ballRB.transform.position.x < 7.9 && ballRB.velocity.magnitude <= 0.01 && livesCount < maxLives) {
 			StartOver ();
 			AddLife ();
 		}
@@ -72,7 +72,7 @@ public class GameControllerScript : MonoBehaviour {
 
 	//Add force to ball on launch
 	void BallLaunch () {
-		if (livesCount <= maxLives && ballRB.velocity.magnitude <= 0.05) {
+		if (livesCount <= maxLives && ballRB.velocity.magnitude <= 0.01) {
 			ballRB.AddForce (new Vector2 (0, 20), ForceMode2D.Impulse);
 		}
 	}
@@ -96,13 +96,13 @@ public class GameControllerScript : MonoBehaviour {
 
 	//When no more lives
 	void GameOver () {
-		gameText.text = "Game Over";
+		gameText.text = "Game Over" + "\n" + "Score: " + score;
 		StartCoroutine (ReloadGame ());
 	}
 
 	//Reload when no more lives
 	IEnumerator ReloadGame () {
-		yield return new WaitForSeconds (2);
+		yield return new WaitForSeconds (3);
 		Scene scene = SceneManager.GetActiveScene ();
 		SceneManager.LoadScene (scene.name);
 	}
